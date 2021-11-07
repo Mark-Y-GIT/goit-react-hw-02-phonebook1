@@ -1,9 +1,7 @@
 import './App.css';
 import React, { Component } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-
 import testData from './data.json';
-// import { number } from 'prop-types';
 import ContactForm from './components/ContactForm';
 import Filter from './components/Filter';
 import ContactList from './components/ContactList';
@@ -29,15 +27,33 @@ class App extends Component {
   };
 
   handleOnFormSubmit = data => {
+    const { name, number } = data;
+    const { contacts } = this.state;
+    if (
+      contacts.find(
+        contact => name.toLowerCase() === contact.name.toLowerCase(),
+      )
+    ) {
+      alert(name + ' is already in contacts');
+      return;
+    }
+
     this.setState(prevState => {
-      const { name, number } = data;
       return {
         contacts: [
-          ...prevState.contacts,
           { name: name, id: uuidv4(), number: number },
+          ...prevState.contacts,
         ],
       };
     });
+  };
+
+  deleteContact = id => {
+    const { contacts } = this.state;
+    const contactForDelete = contacts.filter(contact => contact.id !== id);
+    this.setState({ contacts: [...contactForDelete] });
+
+    console.log(contactForDelete);
   };
 
   render() {
@@ -54,7 +70,10 @@ class App extends Component {
           filter={filter}
           handleFilterChange={this.handleFilterChange}
         />
-        <ContactList contacts={this.getFilteredContacts()} />
+        <ContactList
+          contacts={this.getFilteredContacts()}
+          deleteContact={this.deleteContact}
+        />
       </div>
     );
   }

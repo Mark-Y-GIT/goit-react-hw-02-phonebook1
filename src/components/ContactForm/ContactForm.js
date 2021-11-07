@@ -1,6 +1,4 @@
 import { Component } from 'react';
-// import { number } from 'prop-types';
-
 class ContactForm extends Component {
   state = {
     name: '',
