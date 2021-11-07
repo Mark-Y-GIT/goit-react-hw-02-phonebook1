@@ -1,12 +1,11 @@
-// export default function ContactList({ contacts }) {
-//   console.log(contacts);
-//   return (
-//     <ul>
-//       {contacts.map(contact => (
-//         <li>
-//           {contact.name}: {contact.number}
-//         </li>
-//       ))}
-//     </ul>
-//   );
-// }
+export default function ContactList({ contacts }) {
+  return (
+    <ul>
+      {contacts.map(contact => (
+        <li id={contact.id} key={contact.id}>
+          <span>{contact.name}</span> {contact.number}
+        </li>
+      ))}
+    </ul>
+  );
+}
