@@ -52,15 +52,13 @@ class App extends Component {
     const { contacts } = this.state;
     const contactForDelete = contacts.filter(contact => contact.id !== id);
     this.setState({ contacts: [...contactForDelete] });
-
-    console.log(contactForDelete);
   };
 
   render() {
     const { contacts, filter } = this.state;
 
     return (
-      <div>
+      <div className="main-wraper">
         <h1>Phonebook</h1>
         <ContactForm handleOnFormSubmit={this.handleOnFormSubmit} />
 

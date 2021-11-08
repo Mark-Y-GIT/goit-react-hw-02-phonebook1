@@ -1,8 +1,9 @@
+import PropTypes from 'prop-types';
 export default function ContactList({ contacts, deleteContact }) {
   return (
     <ul>
       {contacts.map(contact => (
-        <li id={contact.id} key={contact.id}>
+        <li className="list" id={contact.id} key={contact.id}>
           <span>{contact.name}</span> {contact.number}
           <button
             type="button"
@@ -16,3 +17,8 @@ export default function ContactList({ contacts, deleteContact }) {
     </ul>
   );
 }
+
+ContactList.propTypes = {
+  contacts: PropTypes.arrayOf(PropTypes.object),
+  deleteContact: PropTypes.func,
+};

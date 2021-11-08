@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 export default function Filter({ filter, handleFilterChange }) {
   return (
     <>
@@ -11,3 +12,8 @@ export default function Filter({ filter, handleFilterChange }) {
     </>
   );
 }
+
+Filter.propTypes = {
+  filter: PropTypes.string,
+  handleFilterChange: PropTypes.func,
+};

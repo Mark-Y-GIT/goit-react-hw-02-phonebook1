@@ -1,3 +1,4 @@
+import '../../App.css';
 import { Component } from 'react';
 class ContactForm extends Component {
   state = {
@@ -36,6 +37,7 @@ class ContactForm extends Component {
         />
         <h2>Number</h2>
         <input
+          className="input-number"
           type="tel"
           name="number"
           value={number}
@@ -45,7 +47,9 @@ class ContactForm extends Component {
           required
         />
         <br />
-        <button type="submit">Add contact</button>
+        <button type="submit" className="input-button">
+          Add contact
+        </button>
       </form>
     );
   }
